@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 15</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            15.AJAX Post Request:
+            A. Implement a JavaScript function that sends an AJAX POST request to the following URL: "https://api.example.com/submit".
+            B. Send a JSON payload with the following data: { "name": "John Doe", "email": "johndoe@example.com" }.
+        */
+ 
+        fetch("https://api.example.com/submit", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "name": "John Doe", "email": "johndoe@example.com" })
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            console.log(data);
+        });
+
+    </script>
+</body>
+</html>

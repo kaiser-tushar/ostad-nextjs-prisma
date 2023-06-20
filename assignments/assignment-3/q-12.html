@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+</head>
+<body>
+    <button id="button">Click me</button>
+
+    <div style="margin-top: 30px;">
+        <img id="dummy-img" src="https://picsum.photos/id/1/200/300" alt="">
+    </div>
+    <script>
+        /* 
+            12.DOM Change Attribute Value:
+            A. Create a webpage with an image element (<img>) that has an initial source URL.
+            B. Implement a JavaScript function that changes the source URL of the image element when a button is clicked. Use a different image URL of your choice.
+
+        */
+
+        const buttonElement = document.getElementById('button');
+        const imgElement = document.querySelector("img");
+
+        buttonElement.addEventListener("click", function(event) {
+            const splittedArray = imgElement.src.split("/");
+            let photoID = Array.isArray(splittedArray)?splittedArray[4]:null;
+            let url = null;
+            if(photoID != null)
+            {
+                photoID = parseInt(photoID) + 1;
+                url = `https://picsum.photos/id/${photoID}/400/400`;
+                imgElement.src = url;
+            }
+        })
+
+    </script>
+</body>
+</html>

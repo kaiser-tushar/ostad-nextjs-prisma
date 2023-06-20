@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Question 7</title>
+    </head>
+    <body>
+        <div>
+            <img id="dummy-img" src="https://picsum.photos/id/1/200/300" alt="">
+        </div>
+        <script>
+            /* 
+                7.JS Common Events:
+                Implement a webpage with the following functionality:
+            */
+
+            //  A. When the user clicks anywhere on the page, display an alert with the coordinates (x, y) of the click.
+            document.addEventListener("click", function(event) {
+                let cursorOfX = event.pageX;
+                let cursorOfY= event.pageY;
+
+                console.log(`Cordinates(X, Y): (${cursorOfX}, ${cursorOfY})`);
+            });
+
+            // B. When the user presses any key on the keyboard, display an alert with the key code of the pressed key.
+            document.addEventListener("keydown", function(event) {
+                console.log(`Key Code: ${event.keyCode}`);
+            })
+
+            // C. When the user moves the mouse over an image, change the image source to another image of your choice.
+            const imgElement = document.getElementById("dummy-img")
+            imgElement.addEventListener("mouseover", function(event) {
+                const splittedArray = event.target.src.split("/");
+                let photoID = Array.isArray(splittedArray)?splittedArray[4]:null;
+                let url = null;
+                if(photoID != null)
+                {
+                    photoID = parseInt(photoID) + 1;
+                    url = `https://picsum.photos/id/${photoID}/400/400`;
+                    event.target.src = url;
+                }
+
+            })
+
+        </script>
+    </body>
+</html>
