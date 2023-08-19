@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "./SingleBlogPage.module.css";
-import getBlogs from "@/lib/getBlogs";
+import blogData from "@/data/blogData.json";
 
-export default async function SingleBlog({ params }) {
-  const data = await getBlogs();
-  const blogContent = data.posts?.find((item) => item.id == params.id);
+export default function SingleBlog({ params }) {
+  const blogContent = blogData.posts?.find((item) => item.id == params.id);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.blogPost}>
@@ -17,13 +16,4 @@ export default async function SingleBlog({ params }) {
       </div>
     </div>
   );
-}
-
-// Return a list of `params` to populate the [id] dynamic segment
-export async function generateStaticParams() {
-  const blogs = await getBlogs();
-
-  return blogs.posts.map((post) => ({
-    id: "" + post.id,
-  }));
 }

@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "./page.module.css";
-import getBlogs from "@/lib/getBlogs";
 import Link from "next/link";
-
+import blogData from "@/data/blogData.json";
 export default async function Blogs() {
-  const blogData = await getBlogs();
   return (
     <div className={styles.mainContainer}>
       <div className={styles.blogGrid}>
